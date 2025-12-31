@@ -12,7 +12,7 @@ async function startFireworks() {
         background: { color: "transparent" },
         emitters: [{
             position: { x: 50, y: 100 },
-            rate: { delay: 0.5, quantity: 5 },
+            rate: { delay: 0.5, quantity: 2 },
             life: { count: 0 }
         }],
         fireworks: {
