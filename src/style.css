@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =======================
+   BASE
+======================= */
+@layer base {
+  body {
+    font-family: 'Kanit', 'Chonburi', sans-serif;
+    background: linear-gradient(
+      135deg,
+      #ffe4f2 0%,
+      #f5c6ff 25%,
+      #d9b8ff 50%,
+      #c4a1ff 75%,
+      #b28dff 100%
+    );
+    min-height: 100vh;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    color: #ffffff;
+  }
+
+  html {
+    height: -webkit-fill-available;
+  }
+
+  .page {
+    position: fixed;
+    inset: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .page.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+  }
+
+  .page.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+}
+
+/* =======================
+   COMPONENTS
+======================= */
+@layer components {
+  .title {
+    font-family: 'Chonburi', sans-serif;
+    letter-spacing: 2px;
+    color: #fff0fa;
+    text-shadow: 0 4px 12px rgba(255, 105, 180, 0.6);
+  }
+
+  .year {
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #ffb7dd;
+    text-shadow: 0 2px 10px rgba(255, 182, 193, 0.8);
+  }
+
+  .message {
+    font-size: 1rem;
+    color: #fff6fb;
+    text-shadow: 0 2px 6px rgba(255, 160, 200, 0.6);
+  }
+
+  .star {
+    @apply absolute w-1 h-1 rounded-full;
+    background: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 182, 193, 1);
+  }
+
+  /* ===== ปุ่มหลัก ===== */
+  .firework-button {
+    font-weight: 500;
+    letter-spacing: 1px;
+    background: linear-gradient(
+      135deg,
+      #ff9acb 0%,
+      #d48cff 50%,
+      #b388ff 100%
+    );
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    border-radius: 999px;
+    padding: 14px 28px;
+    color: #fff;
+    box-shadow:
+      0 0 20px rgba(255, 182, 193, 0.8),
+      0 0 40px rgba(186, 104, 200, 0.6);
+    transition: all 0.3s ease;
+  }
+
+  .firework-button:hover {
+    transform: scale(1.05);
+    box-shadow:
+      0 0 30px rgba(255, 182, 193, 1),
+      0 0 60px rgba(186, 104, 200, 0.8);
+  }
+
+  .firework-button:active {
+    transform: scale(0.95);
+    background: linear-gradient(
+      135deg,
+      #ffa6d5 0%,
+      #e0a8ff 100%
+    );
+  }
+
+  /* ===== Glow Layer ===== */
+  .button-glow {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.2)
+    );
+    animation: buttonPulse 2s infinite;
+  }
+
+  @keyframes buttonPulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
+  }
+
+  /* ===== Sparkle ===== */
+  .gift-sparkle {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow:
+      0 0 12px rgba(255, 182, 193, 1),
+      0 0 24px rgba(216, 180, 254, 1);
+    animation: giftSparkle 2s infinite;
+  }
+
+  @keyframes giftSparkle {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(0); }
+  }
+}
+
+/* =======================
+   UTILITIES
+======================= */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 1.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ===== Month Button ===== */
+.month-btn {
+  background: rgba(255, 255, 255, 0.35);
+  color: #6b21a8;
+  border-radius: 999px;
+  padding: 10px 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+}
+
+.month-btn:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(1.08);
+}

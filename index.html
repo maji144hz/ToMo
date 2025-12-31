@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>🎆 จุดพลุปีใหม่ 🎆</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Chonburi&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/src/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-preset-fireworks@2/tsparticles.preset.fireworks.bundle.min.js"></script>
+</head>
+<body>
+    <div class="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
+
+        <!-- Stars -->
+        <div class="stars absolute w-full h-full"></div>
+
+        <!-- Fireworks -->
+        <div id="tsparticles" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></div>
+
+        <!-- Content -->
+        <div class="content text-center z-10 relative px-6">
+            <h2 class="text-4xl text-white mb-10 animate-glow drop-shadow-lg">
+                For my girlfriend, my everything ❤️
+            </h2>
+
+            <!-- 🔥 ปุ่มจุดพลุ -->
+            <button
+                id="fireworkBtn"
+                class="firework-button relative px-12 py-5 text-2xl font-bold text-white rounded-full shadow-2xl transform transition-all duration-300 active:scale-95 mb-6"
+            >
+                <span class="relative z-10">🎆 จุดพลุ 🎆</span>
+                <div class="button-glow absolute inset-0 rounded-full"></div>
+            </button>
+
+            <!-- ปุ่มทั้งหมด (ซ่อนไว้ก่อน) -->
+            <div id="buttonsContainer" class="hidden flex flex-col gap-4 items-center">
+                <!-- 💌 ปุ่มจดหมาย -->
+                <button
+                    id="giftBox"
+                    class="firework-button relative px-12 py-5 text-2xl font-bold text-white rounded-full shadow-2xl transform transition-all duration-300 active:scale-95 w-full max-w-xs"
+                >
+                    <span class="relative z-10">จดหมาย💌</span>
+                    <div class="button-glow absolute inset-0 rounded-full"></div>
+                </button>
+
+                <!-- 📅 ปุ่ม Timeline -->
+                <button
+                    id="timelineBtn"
+                    class="firework-button relative px-12 py-5 text-2xl font-bold text-white rounded-full shadow-2xl transform transition-all duration-300 active:scale-95 w-full max-w-xs"
+                >
+                    <span class="relative z-10">ช่วงเวลาที่ผ่านมา 📅</span>
+                    <div class="button-glow absolute inset-0 rounded-full"></div>
+                </button>
+
+                <!-- 🎁 ปุ่มของขวัญ -->
+                <button
+                    id="giftBtn"
+                    class="firework-button relative px-12 py-5 text-2xl font-bold text-white rounded-full shadow-2xl transform transition-all duration-300 active:scale-95 w-full max-w-xs"
+                >
+                    <span class="relative z-10">ของขวัญ 🎁</span>
+                    <div class="button-glow absolute inset-0 rounded-full"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup จดหมาย -->
+    <div id="popupModal" class="popup-modal hidden fixed inset-0 z-[2000] flex items-center justify-center">
+        <div class="popup-overlay absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="popup-content relative bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 rounded-3xl p-8 md:p-12 mx-4 max-w-md w-full transform transition-all duration-300 scale-95 opacity-0">
+            <button id="closePopup" class="absolute top-4 right-4 text-white text-3xl hover:text-purple-300 transition-colors">×</button>
+
+            <div class="text-center">
+                <h1 class="title text-5xl text-white mb-4">สวัสดีปีใหม่</h1>
+                <h2 class="year text-7xl mb-6 animate-bounce-slow">2025</h2>
+
+                <div class="message text-white text-lg md:text-xl">
+                    <p>ขอให้ปีนี้เป็นปีของเรา</p>
+                    <p>ปีที่มีเราอยู่ข้างกันทุกวัน</p>
+                    <p>ตื่นมาแล้วยังมีรอยยิ้มเพราะว่าเค้ามีเธออยู่</p>
+                    <br>
+                    <p>ขอให้ทุกความเหนื่อย ทุกเรื่องแย่ๆที่ผ่านมา</p>
+                    <p>มันผ่านไปพร้อมกับปีเก่า</p>
+                    <p>และปีนี้ให้เราได้กอดกันแน่นกว่าเดิม</p>
+                    <br>
+                    <p>ขอให้สุขภาพแข็งแรงทั้งกายและใจ</p>
+                    <p>ขอให้ไม่ต้องสู้คนเดียวอีกต่อไป</p>
+                    <p>เพราะไม่ว่าอะไรจะเกิดขึ้นเค้าก็ยังอยู่ข้างเธอเสมอ
+                        อยากให้ปีนี้เต็มไปด้วยเสียงหัวเราะของเรา
+                        ช่วงเวลาดีๆ ความรักงี่เง่า และความคิดถึงและขอให้ปีนี้เป็นปีที่เรารักกันเค้าจะรักเธอแบบมากขึ้นทุกวันๆ แบบไม่หายไปไหนแน่นอน✨💛
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Popup Timeline -->
+<div id="timelineModal" class="popup-modal hidden fixed inset-0 z-[2000] flex items-center justify-center">
+    <div class="popup-overlay absolute inset-0 bg-black bg-opacity-50"></div>
+
+    <div class="popup-content relative bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 rounded-3xl p-8 md:p-12 mx-4 max-w-md w-full transform transition-all duration-300 scale-95 opacity-0">
+        <button id="closeTimeline" class="absolute top-4 right-4 text-white text-3xl hover:text-purple-300 transition-colors">×</button>
+
+        <div class="text-center text-white">
+            <h1 class="text-5xl mb-2">Timeline 📅</h1>
+            <h2 class="text-6xl mb-6 animate-bounce-slow">2025</h2>
+
+            <!-- ปุ่มเลือกเดือน -->
+            <div class="grid grid-cols-2 gap-3 mb-6">
+                <button class="month-btn" data-month="sep">กันยายน</button>
+                <button class="month-btn" data-month="oct">ตุลาคม</button>
+                <button class="month-btn" data-month="nov">พฤศจิกายน</button>
+                <button class="month-btn" data-month="dec">ธันวาคม</button>
+            </div>
+
+            <!-- ข้อความ Timeline -->
+            <div id="timelineContent" class="text-lg leading-relaxed">
+                <p>เลือกเดือนด้านบน เพื่อดูเรื่องราวของเรา 💕</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Popup ของขวัญ -->
+<div id="giftModal" class="popup-modal hidden fixed inset-0 z-[2000] flex items-center justify-center">
+    <div class="popup-overlay absolute inset-0 bg-black bg-opacity-50"></div>
+
+    <div class="popup-content relative bg-gradient-to-br from-pink-900 via-purple-800 to-pink-900 rounded-3xl p-8 md:p-12 mx-4 max-w-md w-full transform transition-all duration-300 scale-95 opacity-0">
+        <button id="closeGift" class="absolute top-4 right-4 text-white text-3xl hover:text-pink-300 transition-colors">×</button>
+
+        <div class="text-center text-white">
+            <h1 class="text-5xl mb-4">ของขวัญ 🎁</h1>
+            <h2 class="text-6xl mb-6 animate-bounce-slow">สำหรับเธอ</h2>
+
+            <div class="text-lg leading-relaxed space-y-4">
+                <p>
+                    ของขวัญชิ้นนี้อาจจับต้องไม่ได้  
+                    แต่เค้าอยากให้เธอรู้ว่า  
+                    ทุกวันเวลาของเค้า มีเธออยู่ในนั้นเสมอ 💗
+                </p>
+
+                <p>
+                    เค้าขอให้ของขวัญชิ้นนี้  
+                    เป็นความสบายใจ เป็นรอยยิ้ม  
+                    และเป็นที่พักใจของเธอในวันที่เหนื่อย
+                </p>
+
+                <p class="text-xl font-semibold">
+                   บอกเค้าหน่อยนะครับว่ารู้สึกยังไง
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+
